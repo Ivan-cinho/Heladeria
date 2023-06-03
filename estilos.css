@@ -1,0 +1,11 @@
+
+
+.card {
+    display: flex;
+    align-items: center;
+}
+
+.botonAgregar {
+    color:darkorange;
+    background-color: rgb(241, 192, 241);
+}
