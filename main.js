@@ -20,6 +20,14 @@ const productos = [ {id: 1, tamaño: "Cuarto de kg", precio: 1200, cantidad: 1},
                     {id: 3, tamaño: "1 kg", precio: 3600, cantidad: 1}
 ];
 
+const sabores = [{id:1, Gusto: "Frutilla", Tipo: "Al agua"}, {id:2, Gusto: "Naranja", Tipo: "Al agua"}, {id:3, Gusto:"Durazno", Tipo:"Al agua"},
+{id:4, Gusto:"Kibana", Tipo:"Al agua"}, {id:5, Gusto:"Menta, limon y gengibre", Tipo:"Al agua"}, {id:6, Gusto:"Kiwi", Tipo:"Al agua"}, {id:6, Gusto:"Crema americana", Tipo:"Crema"}, 
+{id:7, Gusto:"Granizado", Tipo:"Crema"}, {id:8, Gusto:"Mascarpone", Tipo:"Crema"}, {id:9, Gusto:"Crema rusa", Tipo:"Crema"}, {id:10, Gusto:"Sambayon", Tipo:"Crema"}, 
+{id:11, Gusto:"Chocolate", Tipo:"Chocolate"}, {id:12, Gusto:"Chocolate negro", Tipo:"Chocolate"}, {id:13, Gusto:"Chocolate suizo", Tipo:"Chocolate"}, 
+{id:14, Gusto:"Chocolate con dulce de leche", Tipo:"Chocolate"}, {id:15, Gusto:"Chocolate bombon", Tipo:"Chocolate"}, {id:16, Gusto:"Dulce de leche", Tipo:"Dulce de leche"}, 
+{id:17, Gusto:"Dulce de leche granizado", Tipo:"Dulce de leche"}, {id:18, Gusto:"Super dulce de leche", Tipo:"Dulce de leche"}, {id:19, Gusto:"Dulce de leche con merengue", Tipo:"Dulce de leche"}, {id:20, Gusto:"Dulce de leche de la casa", Tipo:"Dulce de leche"}
+];
+
 let pedido = [];
 
 // cargar pedido de local storage
@@ -52,6 +60,7 @@ const mostrarProductos = () => {
 mostrarProductos()
 
 const agregarAlPedido = (id) => {
+    // debugger
     const productoEnPedido = pedido.find(producto => producto.id === id);
     if(productoEnPedido) {
         productoEnPedido.cantidad++;
@@ -145,12 +154,13 @@ vaciarDelPedido.addEventListener("click", () => {
 })
 
 const vaciarTodoElPedido = () => {
+    debugger
+    // const producto = pedido.find(producto => producto.id === id);
     productos.cantidad = 1;
     pedido = [];
+    localStorage.clear();
     mostrarPedido();
     calcularTotal();
-    // localStorage
-    localStorage.clear();
 }
 
 // confirmar pedido
@@ -158,9 +168,14 @@ const vaciarTodoElPedido = () => {
 const confirmarPedido = document.querySelector("#confirmarPedido");
 
 confirmarPedido.addEventListener("click", () => {
-    confirmarTodoElPedido();
+    if(pedido.length >= 1) {
+        confirmarTodoElPedido();
+    } else {
+        alert("No tenes un pedido hecho")
+    }    
 })
 
 const confirmarTodoElPedido = () => {
-
+    let todosLosSabores = sabores.map((sabor) => sabor.Gusto + " " + sabor.Tipo);
+    alert(todosLosSabores.join(" - "));
 }
