@@ -59,6 +59,15 @@ const mostrarProductos = () => {
 }
 mostrarProductos()
 
+// completar funcion para cargar lista de productos
+// const mostrarSabores = () => {
+//     sabores.forEach(sabor => {
+
+//     }
+
+//     )
+// }
+
 const agregarAlPedido = (id) => {
     // debugger
     const productoEnPedido = pedido.find(producto => producto.id === id);
